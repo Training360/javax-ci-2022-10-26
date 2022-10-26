@@ -93,7 +93,7 @@ A `mvnw package` parancs kiadása után létrejön a `target/site/jacoco/index.h
 
 ## Integrációs tesztelés
 
-Az `EmployeesControllerRestAssuredIT` és `employee-dto.json` átmásolása
+Az `src\test\java\employees\EmployeesControllerRestAssuredIT` és `src\test\resources\employee-dto.json` átmásolása
 a megfelelő könyvtárba.
 
 A `pom.xml`-t kell kiegészíteni a `maven-failsafe-plugin`-nal.
