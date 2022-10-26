@@ -89,6 +89,8 @@ docker run --name nexus --detach --publish 8091:8081 --publish 8092:8082 --volum
 
 A `pom.xml`-t kell kiegészíteni a `jacoco-maven-plugin`-nal.
 
+A `mvnw package` parancs kiadása után létrejön a `target/site/jacoco/index.html` riport.
+
 ## Git
 
 ```shell
