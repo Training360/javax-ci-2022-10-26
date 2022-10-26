@@ -85,6 +85,10 @@ docker run --name nexus --detach --publish 8091:8081 --publish 8092:8082 --volum
 * A `$HOME\.m2\repository\antlr` könyvtár törlése.
 * `mvnw package` parancs futtatása
 
+## Tesztlefedettség
+
+A `pom.xml`-t kell kiegészíteni a `jacoco-maven-plugin`-nal.
+
 ## Git
 
 ```shell
