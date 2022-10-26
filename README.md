@@ -50,6 +50,41 @@ net localgroup docker-users %USERDOMAIN%\%USERNAME% /add
 
 Kijelentkezés, visszajelentkezés, Docker Desktop elindítása menüből
 
+Kipróbálni:
+
+```shell
+docker run hello-world
+```
+
+## Nexus indítása
+
+```shell
+docker run --name nexus --detach --publish 8091:8081 --publish 8092:8082 --volume nexus-data:/nexus-data sonatype/nexus3
+```
+
+## Letöltés Nexusról, proxy-n át
+
+`$HOME\.m2\settings.xml` fájl létrehozása a következő tartalommal:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+   <mirrors>
+    <mirror>
+      <id>central</id>
+      <name>central</name>
+      <url>http://localhost:8091/repository/maven-public/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
+```
+
+* A `$HOME\.m2\repository\antlr` könyvtár törlése.
+* `mvnw package` parancs futtatása
+
 ## Git
 
 ```shell
