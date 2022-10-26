@@ -91,6 +91,12 @@ A `pom.xml`-t kell kiegészíteni a `jacoco-maven-plugin`-nal.
 
 A `mvnw package` parancs kiadása után létrejön a `target/site/jacoco/index.html` riport.
 
+## Integrációs tesztelés
+
+A `pom.xml`-t kell kiegészíteni a `maven-failsafe-plugin`-nal.
+
+Majd `mvnw verfiy` parancsot kell kiadni.
+
 ## Git
 
 ```shell
