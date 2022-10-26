@@ -95,7 +95,7 @@ A `mvnw package` parancs kiadása után létrejön a `target/site/jacoco/index.h
 
 A `pom.xml`-t kell kiegészíteni a `maven-failsafe-plugin`-nal.
 
-Majd `mvnw verfiy` parancsot kell kiadni.
+Majd `mvnw verify` parancsot kell kiadni.
 
 ## Git
 
