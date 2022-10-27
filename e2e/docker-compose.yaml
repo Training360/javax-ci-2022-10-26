@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  employees-mariadb:
+    image: mariadb
+    expose:
+      - 3306
+    environment:
+      MARIADB_DATABASE: employees      
+      MARIADB_USER: employees
+      MARIADB_PASSWORD: employees
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes' # aposztrófok nélkül boolean true-ként értelmezi
+
+  employees-app:
+    image: employees
+    expose:
+      - 8080
+    ports:
+      - 8083:8080
+    depends_on:
+      - employees-mariadb
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mariadb://employees-mariadb/employees'
+      SPRING_DATASOURCE_USERNAME: employees
+      SPRING_DATASOURCE_PASSWORD: employees
+    volumes:
+    - ./wait:/opt/wait
+    entrypoint: ["/opt/wait/wait-for-it.sh", "-t", "120", "employees-mariadb:3306", "--", "java", "-jar", "employees.jar"]
+
+  newman:
+    image: postman/newman:5-ubuntu
+    volumes:
+    - ./wait:/opt/wait
+    - ./postman:/etc/newman
+    entrypoint: ["/opt/wait/wait-for-it.sh", "-t", "120", "employees-app:8080", "--", "newman", "run", "employees.postman_collection.json", "-e", "local.postman_environment.json"]
+
+

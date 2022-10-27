@@ -181,6 +181,26 @@ Nagyon vigyázni kell a `wait-for-it.sh`-ban lévő sorvége jelekre, hogy Linux
 * `mvnw package`
 * Majd újra kiadni a `docker build -t leayered-employees -f layers.Dockerfile .` parancsot
 
+## Postman teszteset
+
+```javascript
+pm.test("Status code is 201", function () {
+    pm.response.to.have.status(201);
+});
+pm.test("Check name", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.name).to.eql("Jack Doe");
+});
+```
+
+## Futtatás
+
+* `e2e` könyvtár hasonlóan nézzen ki, mint az oktatónál
+
+```shell
+docker compose up --abort-on-container-exit
+```
+
 ## Git
 
 ```shell
