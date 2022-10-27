@@ -134,6 +134,11 @@ docker exec -it employees-mariadb mysql employees
 select * from employees;
 ```
 
+## Integrációs tesztek futtatása valós adatbázison
+
+A `pom.xml` állományt kiegészítjük a `maven-failsafe-plugin`-nél
+a `configuration` taggel.
+
 ## Git
 
 ```shell

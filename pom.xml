@@ -192,6 +192,14 @@
 					</goals>
 				</execution>
 			</executions>
+			<configuration>
+				<systemPropertyVariables>
+					<SPRING_DATASOURCE_URL>jdbc:mariadb://localhost/employees</SPRING_DATASOURCE_URL>
+					<SPRING_DATASOURCE_USERNAME>employees</SPRING_DATASOURCE_USERNAME>
+					<SPRING_DATASOURCE_PASSWORD>employees</SPRING_DATASOURCE_PASSWORD>
+				</systemPropertyVariables>
+			</configuration>
+
 		</plugin>
 
 
