@@ -191,6 +191,21 @@ Nagyon vigyázni kell a `wait-for-it.sh`-ban lévő sorvége jelekre, hogy Linux
 docker build -t built-employees -f build.Dockerfile --progress=plain .
 ```
 
+## Függőségek cache-elése
+
+* Át kell másolni a `buildcache.Dockerfile` fájlt
+* Majd
+
+```shell
+docker build -t builtcache-employees -f buildcache.Dockerfile --progress=plain .
+```
+
+* Controller módosítása
+
+* Utána újra az előző parancs.
+
+Másodjára már nem húz le annyi függőséget.
+
 ## Postman teszteset
 
 ```javascript
