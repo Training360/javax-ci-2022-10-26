@@ -165,11 +165,13 @@ docker run -d -p 8081:8080 -e SPRING_DATASOURCE_URL=jdbc:mariadb://employees-app
 
 # Két konténer futtatása egy paranccsal
 
-Az `employees-app` könyvtár átmásolása, ebben kiadni:
+Az `employees-app` könyvtár átmásolása, ebben a könyvtában kiadni:
 
 ```shell
 docker compose up
 ```
+
+Nagyon vigyázni kell a `wait-for-it.sh`-ban lévő sorvége jelekre, hogy Linuxosak maradjanak.
 
 ## Git
 
