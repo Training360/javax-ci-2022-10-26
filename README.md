@@ -181,6 +181,16 @@ Nagyon vigyázni kell a `wait-for-it.sh`-ban lévő sorvége jelekre, hogy Linux
 * `mvnw package`
 * Majd újra kiadni a `docker build -t leayered-employees -f layers.Dockerfile .` parancsot
 
+## Build a Docker konténerben
+
+* Vigyázz! Az `mvnw` szkript Linuxos sorvége jeleket tartalmazzon!
+* `build.Dockerfile` átmásolása
+* Parancs a főkönyvtárban:
+
+```shell
+docker build -t built-employees -f build.Dockerfile --progress=plain .
+```
+
 ## Postman teszteset
 
 ```javascript
