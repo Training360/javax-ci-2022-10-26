@@ -123,6 +123,17 @@ docker run -d -p 80:80 --name my-nginx -v C:\Users\T360-kk-CICD-o\javax-ci-2022-
 docker run -d -e MARIADB_DATABASE=employees -e MARIADB_USER=employees  -e MARIADB_PASSWORD=employees -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes -p 3306:3306 --name employees-mariadb mariadb
 ```
 
+## Adatbázishoz kapcsolódás
+
+```shell
+set SPRING_DATASOURCE_URL=jdbc:mariadb://localhost/employees
+set SPRING_DATASOURCE_USERNAME=employees
+set SPRING_DATASOURCE_PASSWORD=employees
+java -jar target\employees-1.0-SNAPSHOT.jar
+docker exec -it employees-mariadb mysql employees
+select * from employees;
+```
+
 ## Git
 
 ```shell
