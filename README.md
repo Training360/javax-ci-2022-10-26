@@ -155,6 +155,22 @@ docker build -t employees .
 docker run -d -p 8080:8080 --name my-employees employees
 ```
 
+## Konténerek saját hálózatban
+
+```shell
+docker network create employees-net
+docker run -d -e MARIADB_DATABASE=employees -e MARIADB_USER=employees  -e MARIADB_PASSWORD=employees -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes -p 3307:3306 --network employees-net --name employees-app-mariadb mariadb
+docker run -d -p 8081:8080 -e SPRING_DATASOURCE_URL=jdbc:mariadb://employees-app-mariadb/employees -e SPRING_DATASOURCE_USERNAME=employees -e SPRING_DATASOURCE_PASSWORD=employees --network employees-net --name my-app-employees employees
+```
+
+# Két konténer futtatása egy paranccsal
+
+Az `employees-app` könyvtár átmásolása, ebben kiadni:
+
+```shell
+docker compose up
+```
+
 ## Git
 
 ```shell
