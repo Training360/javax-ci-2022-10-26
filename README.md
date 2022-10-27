@@ -152,6 +152,7 @@ ENTRYPOINT ["java", "-jar", "employees.jar"]
 
 ```shell
 docker build -t employees .
+docker run -d -p 8080:8080 --name my-employees employees
 ```
 
 ## Git
