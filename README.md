@@ -100,6 +100,29 @@ A `pom.xml`-t kell kiegészíteni a `maven-failsafe-plugin`-nal.
 
 Majd `mvnw verify` parancsot kell kiadni.
 
+## Docker parancsok
+
+```shell
+docker run -d -p 80:80 nginx
+docker ps
+docker stop 37
+docker start 37
+docker logs -f 37
+docker stop 37
+docker rm 37
+docker run -d -p 80:80 --name my-nginx nginx
+docker exec -it my-nginx bash
+docker exec -it my-nginx cat /etc/nginx/nginx.conf  
+docker rm --force  my-nginx 
+docker run -d -p 80:80 --name my-nginx -v C:\Users\T360-kk-CICD-o\javax-ci-2022-10-26\html:/usr/share/nginx/html:ro nginx
+```
+
+## Adatbázis elindítása
+
+```shell
+docker run -d -e MARIADB_DATABASE=employees -e MARIADB_USER=employees  -e MARIADB_PASSWORD=employees -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes -p 3306:3306 --name employees-mariadb mariadb
+```
+
 ## Git
 
 ```shell
