@@ -139,6 +139,14 @@ select * from employees;
 A `pom.xml` állományt kiegészítjük a `maven-failsafe-plugin`-nél
 a `configuration` taggel.
 
+## Image létrehozása
+
+Létrehoztuk a `Dockerfile` fájlt.
+
+```shell
+docker build -t employees .
+```
+
 ## Git
 
 ```shell
