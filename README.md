@@ -165,13 +165,21 @@ docker run -d -p 8081:8080 -e SPRING_DATASOURCE_URL=jdbc:mariadb://employees-app
 
 # Két konténer futtatása egy paranccsal
 
-Az `employees-app` könyvtár átmásolása, ebben a könyvtában kiadni:
+Az `employees-app` könyvtár átmásolása, ebben a könyvtárban kiadni:
 
 ```shell
 docker compose up
 ```
 
 Nagyon vigyázni kell a `wait-for-it.sh`-ban lévő sorvége jelekre, hogy Linuxosak maradjanak.
+
+## Docker layers
+
+* Átmásolni a `layers.Dockerfile` fájlt.
+* Kiadni a `docker build -t leayered-employees -f layers.Dockerfile .` parancsot
+* Módosítani a `src\main\java\employees\controller\EmployeesController.java` fájlt: 28-as sor, idézőjelek közé egy pont
+* `mvnw package`
+* Majd újra kiadni a `docker build -t leayered-employees -f layers.Dockerfile .` parancsot
 
 ## Git
 
