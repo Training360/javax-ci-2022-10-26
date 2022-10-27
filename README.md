@@ -196,6 +196,7 @@ pm.test("Check name", function () {
 ## Futtatás
 
 * `e2e` könyvtár hasonlóan nézzen ki, mint az oktatónál
+* A következő parancsot kell kiadni az `e2e` könyvtárban (a docker compose mindig az aktuális könyvtárban keresi a `docker-compose.yaml` fájlt)
 
 ```shell
 docker compose up --abort-on-container-exit
