@@ -141,7 +141,14 @@ a `configuration` taggel.
 
 ## Image létrehozása
 
-Létrehoztuk a `Dockerfile` fájlt.
+Létrehoztuk a `Dockerfile` fájlt, a következő tartalommal:
+
+```
+FROM eclipse-temurin:17-jdk
+WORKDIR app
+COPY target/*.jar employees.jar
+ENTRYPOINT ["java", "-jar", "employees.jar"]
+```
 
 ```shell
 docker build -t employees .
