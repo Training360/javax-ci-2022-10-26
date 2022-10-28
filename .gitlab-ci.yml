@@ -1,3 +1,5 @@
+image: eclipse-temurin:17
+
 stages:
   - build
   - integrationtest
@@ -6,6 +8,7 @@ build-job:
   stage: build
   script:
     - echo "Hello Pipeline"
+    - ./mvnw package
 
 integrationtest-job:
   stage: integrationtest

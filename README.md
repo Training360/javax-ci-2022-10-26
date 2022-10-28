@@ -428,3 +428,19 @@ Saját tokennel!
 ```
 docker exec -it gitlab-gitlab-runner-1 gitlab-runner register --non-interactive --url http://gitlab-gitlab-1 --registration-token q_bzYNcE1-W4PGyD9Myr --executor docker --docker-image docker:latest --docker-network-mode gitlab_default --clone-url http://gitlab-gitlab-1 --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 ```
+
+## Docker Hub limit elérése esetén
+
+* Docker Desktop
+* Settings / Docker Engine
+* Beírni az utolsó kapcsoszárójel elé:
+
+```json
+,
+ "registry-mirrors": [
+    "https://mirror.gcr.io"
+  ]
+```
+
+* Apply & Restart
+
