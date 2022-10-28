@@ -444,3 +444,19 @@ docker exec -it gitlab-gitlab-runner-1 gitlab-runner register --non-interactive 
 
 * Apply & Restart
 
+## Pipeline cache
+
+```yaml
+variables:
+   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository
+```
+
+## Version kinyerése
+
+```shell
+mvn org.apache.maven.plugins:maven-help-plugin:3.1.1:evaluate -Dexpression=project.version -q -DforceStdout
+```

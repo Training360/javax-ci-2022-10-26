@@ -3,11 +3,15 @@ image: eclipse-temurin:17
 stages:
   - build
   - integrationtest
+  - buildimage
 
 build-job:
   stage: build
   script:
     - echo "Hello Pipeline"
+    - echo $SONAR_URL
+    - echo $GITHUB_SHA
+    - echo $GITHUB_RUN_NUMBER
     - chmod +x ./mvnw
     - ./mvnw package
 
@@ -15,3 +19,8 @@ integrationtest-job:
   stage: integrationtest
   script:
     - echo "Hello Integration Tests"
+
+buildimage-job:
+  stage: buildimage
+  script:
+    - docker build -t employees .
