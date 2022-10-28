@@ -14,6 +14,9 @@ build-job:
     - echo $GITLAB_RUN_NUMBER
     - chmod +x ./mvnw
     - ./mvnw package
+  artifacts:
+    paths:
+      - target
 
 integrationtest-job:
   stage: integrationtest
