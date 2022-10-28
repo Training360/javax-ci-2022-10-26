@@ -284,6 +284,25 @@ docker exec -it nexus cat /nexus-data/admin.password
 
 * `mvnw deploy` parancs kiadása
 
+## Release esetén
+
+`pom.xml`-ben:
+
+* Verzió `SNAPSHOT` szó törlés
+* `repository` tag elhelyezése
+* Jelszó beállítása a `settings.xml` fájlban
+
+## Docker image Nexusba
+
+* Create Docker repository
+* HTTP `8082` port
+* Adminisztrációs felületen: Nexus Security / Realms tabon: Docker Bearer Token Realm hozzáadása
+
+```shell
+docker login localhost:8092
+docker tag employees localhost:8092/employees:1.0.0
+docker push localhost:8092/employees:1.0.0
+```
 
 ## Git
 
