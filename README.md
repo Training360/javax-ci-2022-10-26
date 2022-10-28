@@ -353,6 +353,23 @@ Következő parancsok:
 
 ```shell
 mvnw package
+docker build -t employees:1.1.0 .
+```
+
+Az `employees-deployment.yaml` fájlban átírni a verziót `1.0.0`-ról `1.1.0`-ra.
+
+```shell
+cd deployments
+kubectl apply -f employees-deployment.yaml
+kubectl get pods
+kubectl port-forward svc/employees-app 8080:8080 
+```
+
+## Prometheus, Grafana
+
+```shell
+kubectl apply -f prometheus-deployment.yaml 
+kubectl apply -f grafana-deployment.yaml
 ```
 
 ## Git
