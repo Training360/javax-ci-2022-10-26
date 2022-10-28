@@ -8,6 +8,7 @@ build-job:
   stage: build
   script:
     - echo "Hello Pipeline"
+    - chmod +x ./mvnw
     - ./mvnw package
 
 integrationtest-job:
