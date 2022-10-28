@@ -304,6 +304,29 @@ docker tag employees localhost:8092/employees:1.0.0
 docker push localhost:8092/employees:1.0.0
 ```
 
+## Telepítés Kubernetesre
+
+Vigyázz, a pod nevénél a saját podod nevét használd!
+
+```shell
+kubectl version
+kubectl apply -f mariadb-secrets.yaml
+kubectl get secrets
+kubectl apply -f mariadb-deployment.yaml
+kubectl get pods
+kubectl logs -f mariadb-85cc8b5b94-ljdtg
+kubectl apply -f employees-secrets.yaml
+kubectl apply -f employees-deployment.yaml
+kubectl get pods
+docker tag employees employees:1.0.0
+  # employees-deployment.yaml fájl kiegészítése: - image: employees:1.0.0
+kubectl delete -f employees-deployment.yaml
+kubectl apply -f employees-deployment.yaml
+kubectl get pods
+kubectl logs -f employees-app-8695c558-g4p6p
+kubectl port-forward svc/employees-app 8080:8080
+```
+
 ## Git
 
 ```shell
