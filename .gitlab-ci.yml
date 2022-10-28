@@ -10,8 +10,8 @@ build-job:
   script:
     - echo "Hello Pipeline"
     - echo $SONAR_URL
-    - echo $GITHUB_SHA
-    - echo $GITHUB_RUN_NUMBER
+    - echo $GITLAB_SHA
+    - echo $GITLAB_RUN_NUMBER
     - chmod +x ./mvnw
     - ./mvnw package
 
@@ -21,6 +21,7 @@ integrationtest-job:
     - echo "Hello Integration Tests"
 
 buildimage-job:
+  image: docker:20.10.11
   stage: buildimage
   script:
     - docker build -t employees .
