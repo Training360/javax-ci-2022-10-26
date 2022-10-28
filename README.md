@@ -372,9 +372,59 @@ kubectl apply -f prometheus-deployment.yaml
 kubectl apply -f grafana-deployment.yaml
 ```
 
+Külön parancssorokban:
+
+```shell
+kubectl port-forward svc/prometheus 9090:9090
+kubectl port-forward svc/grafana 3000:3000
+kubectl port-forward svc/employees-app 8080:8080
+```
+
+http://localhost:3000
+
+Grafana felhasználónév/jelszó: `admin` / `admin`
+
+## GitLab
+
+```shell
+cd gitlab
+docker compose up -d
+```
+
 ## Git
 
 ```shell
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
+```
+
+A projekt főkönyvtárában!
+
+```shell
+git init
+git add .
+git commit -m "Init"
+```
+
+## GitLab
+
+```shell
+docker exec -it gitlab-gitlab-1 grep "Password:" /etc/gitlab/initial_root_password
+```
+
+Felhasználónév: `root`
+
+```shell
+git remote add origin http://localhost/gitlab-instance-5169068c/employees.git
+git remote remove origin
+git remote add origin http://localhost/gitlab-instance-5169068c/employees.git
+git push origin master
+```
+
+Menu / Admin / Overview / Runners / Register an instance runner
+
+Saját tokennel!
+
+```
+docker exec -it gitlab-gitlab-runner-1 gitlab-runner register --non-interactive --url http://gitlab-gitlab-1 --registration-token q_bzYNcE1-W4PGyD9Myr --executor docker --docker-image docker:latest --docker-network-mode gitlab_default --clone-url http://gitlab-gitlab-1 --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 ```
