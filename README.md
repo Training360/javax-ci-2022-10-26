@@ -327,6 +327,34 @@ kubectl logs -f employees-app-8695c558-g4p6p
 kubectl port-forward svc/employees-app 8080:8080
 ```
 
+# Monitorozás
+
+`pom.xml` bővítése a `spring-boot-starter-test` előtt:
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+```
+
+A `src\main\resources\application.properties` végére írjuk be:
+
+```
+management.endpoints.web.exposure.include = prometheus
+```
+
+Következő parancsok:
+
+```shell
+mvnw package
+```
+
 ## Git
 
 ```shell
