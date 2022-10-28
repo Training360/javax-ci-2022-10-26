@@ -227,6 +227,64 @@ pm.test("Check name", function () {
 docker compose up --abort-on-container-exit
 ```
 
+## SonarQube
+
+```shell
+docker run --name sonarqube -d -p 9000:9000 sonarqube:lts
+```
+
+Alapértelmezett felhasználónév és jelszó: `admin` / `admin`
+Meg kell változtatni, ne ugyanarra, és talán kell bele kis- és nagybetű, vagy szám.
+
+Token létrehozása: (User) Administrator (jobb felső sarok) / My Account / Security / Generate tokens
+
+Elemzés futtatása (az előbb generált saját tokennel):
+
+```shell
+mvnw sonar:sonar -Dsonar.login=650166f758eaeb54f...
+```
+
+[SonarScanner for Maven plugin dokumentáció](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+
+## Bejelentkezés Nexusba
+
+Elérhető a következő címen: http://localhost:8091
+
+Admin jelszó elérése:
+
+```shell
+docker exec -it nexus cat /nexus-data/admin.password
+```
+
+## Feltöltés Nexusba
+
+* `pom.xml`-be felvenni, pl  `properties` után:
+
+
+```xml
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8091/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+```
+
+* Beállítani a jelszót a `$HOME\.m2\settings.xml` fájlban a `settings` alá:
+
+```xml
+<servers>
+  <server>
+    <id>nexus-snapshots</id>
+    <username>admin</username>
+    <password>admin</password>
+  </server>
+</servers>
+```
+
+* `mvnw deploy` parancs kiadása
+
+
 ## Git
 
 ```shell
