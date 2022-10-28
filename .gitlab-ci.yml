@@ -1,0 +1,13 @@
+stages:
+  - build
+  - integrationtest
+
+build-job:
+  stage: build
+  script:
+    - echo "Hello Pipeline"
+
+integrationtest-job:
+  stage: integrationtest
+  script:
+    - echo "Hello Integration Tests"
